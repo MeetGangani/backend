@@ -13,6 +13,7 @@ import contactRoutes from './routes/contactRoutes.js';
 import passport from 'passport';
 import session from 'express-session';
 import User from './models/userModel.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -20,6 +21,15 @@ connectDB();
 
 const app = express();
 
+const corsOptions = {
+  origin: ['https://krpto-exam.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  maxAge: 86400
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

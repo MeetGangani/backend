@@ -1,16 +1,15 @@
+import dotenv from 'dotenv';
 import express from 'express';
+import passport from 'passport';
 import {
   authUser,
-  registerUser,
-  logoutUser,
   getUserProfile,
-  updateUserProfile,
-  googleAuth,
   googleAuthCallback,
+  logoutUser,
+  registerUser,
+  updateUserProfile
 } from '../controllers/userController.js';
-import { protect, adminOnly, instituteOnly } from '../middleware/authMiddleware.js';
-import passport from 'passport';
-import dotenv from 'dotenv';
+import { adminOnly, instituteOnly, protect } from '../middleware/authMiddleware.js';
 
 dotenv.config();
 
