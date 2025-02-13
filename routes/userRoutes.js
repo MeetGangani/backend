@@ -10,6 +10,9 @@ import {
 } from '../controllers/userController.js';
 import { protect, adminOnly, instituteOnly } from '../middleware/authMiddleware.js';
 import passport from 'passport';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const router = express.Router();
 
@@ -38,7 +41,7 @@ router.get('/auth/google', passport.authenticate('google', {
 
 router.get('/auth/google/callback', 
   passport.authenticate('google', { 
-    failureRedirect: 'http://localhost:3000/login',
+    failureRedirect: `${process.env.FRONTEND_URL}/login`,
     session: false 
   }),
   googleAuthCallback

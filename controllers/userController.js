@@ -80,10 +80,10 @@ const googleAuthCallback = asyncHandler(async (req, res) => {
     });
     
     // Redirect to frontend with success parameter
-    res.redirect('http://localhost:3000/?loginSuccess=true');
+    res.redirect(`${process.env.FRONTEND_URL}/?loginSuccess=true`);
   } catch (error) {
     console.error('Google auth callback error:', error);
-    res.redirect('http://localhost:3000/login?error=auth_failed');
+    res.redirect(`${process.env.FRONTEND_URL}/login?error=auth_failed`);
   }
 });
 
